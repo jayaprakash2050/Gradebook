@@ -2,4 +2,5 @@ com\jjayaku1\crud\jaxb\models\GradeBookEntry.class
 com\jjayaku1\crud\jaxb\utils\Converter.class
 com\jjayaku1\crud\restws\GradeBookResource.class
 com\jjayaku1\crud\restws\ServletContextClass.class
+com\jjayaku1\crud\jaxb\models\GradeAppeal.class
 com\jjayaku1\crud\jaxb\models\GradeItem.class

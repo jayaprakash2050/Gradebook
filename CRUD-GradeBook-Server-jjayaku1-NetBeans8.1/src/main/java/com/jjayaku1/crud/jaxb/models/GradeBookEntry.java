@@ -20,12 +20,14 @@ import org.slf4j.LoggerFactory;
     "studentId",
     "itemId",
     "itemName",
-    "grade"})
+    "grade",
+"feedBack"})
 public class GradeBookEntry {
     private long studentId;
     private int itemId;
     private String itemName;
     private double grade;
+    private String feedBack;
 
     public GradeBookEntry() {
     }
@@ -70,6 +72,14 @@ public class GradeBookEntry {
     @XmlElement
     public void setGrade(double grade) {
         this.grade = grade;
+    }
+    
+    public String getFeedBack(){
+        return this.feedBack;
+    }
+    @XmlElement
+    public void setFeedBack(String feedBack){
+        this.feedBack = feedBack;
     }
     
     @Override

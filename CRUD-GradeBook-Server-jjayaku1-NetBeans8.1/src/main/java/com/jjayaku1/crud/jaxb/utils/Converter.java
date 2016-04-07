@@ -58,4 +58,22 @@ public class Converter {
 
         return result;
     }
+    
+    public static String buildGradeBookEntry(Object source, Class... type) {
+        String result = "";
+        try {
+            JAXBContext jc = JAXBContext.newInstance(type);
+            StringWriter writerTo = new StringWriter();
+            Marshaller marshaller = jc.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            marshaller.setProperty(Marshaller.JAXB_FRAGMENT, true);
+            marshaller.marshal(source, writerTo);
+
+            result = writerTo.toString();
+            return result;
+        } catch (Exception ex) {
+            result = "<InvalidMessage />";
+            return result;
+        }
+    }
 }
