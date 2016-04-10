@@ -693,7 +693,7 @@ public class GradeBookResource {
                         existingAppeals.add(newAppeal);
                         servletContext.setAttribute("appeals", appeals);
                         LOG.info("Creating a {} {} Status Response", Response.Status.CREATED.getStatusCode(), Response.Status.CREATED.getReasonPhrase());
-                        URI locationURI = URI.create(context.getAbsolutePath() + "/" + Long.toString(newAppeal.getStudentId()));
+                        URI locationURI = URI.create(context.getBaseUri()+ "Appeals/" + Long.toString(newAppeal.getStudentId()));
 
                         response = Response.status(Response.Status.CREATED).location(locationURI).entity(content).build();
                     } else {
