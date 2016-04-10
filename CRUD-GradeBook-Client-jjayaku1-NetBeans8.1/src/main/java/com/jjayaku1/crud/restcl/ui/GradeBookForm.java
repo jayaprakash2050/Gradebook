@@ -10,6 +10,8 @@ import com.jjayaku1.crud.restcl.*;
 import com.jjayaku1.crud.jaxb.model.*;
 import com.jjayaku1.crud.restcl.jaxb.utils.*;
 import com.sun.jersey.api.client.ClientResponse;
+import javax.ws.rs.core.Response;
+import java.util.*;
 
 /**
  *
@@ -37,7 +39,8 @@ public class GradeBookForm extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        studentPanel = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         createGradeItemRadio = new javax.swing.JRadioButton();
         updateGradeItemRadio = new javax.swing.JRadioButton();
@@ -71,6 +74,25 @@ public class GradeBookForm extends javax.swing.JFrame {
         panelgradeResult = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtAreaResult1 = new javax.swing.JTextArea();
+        rbDeleteOneGrade = new javax.swing.JRadioButton();
+        jPanel3 = new javax.swing.JPanel();
+        rbGetStudentGrade = new javax.swing.JRadioButton();
+        rbSubmitAppeal = new javax.swing.JRadioButton();
+        pnlGetStudentGrades = new javax.swing.JPanel();
+        lblStudentId = new javax.swing.JLabel();
+        txtStudentIdStudent = new javax.swing.JTextField();
+        btnSubmitStudent = new javax.swing.JButton();
+        pnlAppeal = new javax.swing.JPanel();
+        lblStudentIdAppeal = new javax.swing.JLabel();
+        lblGradeItemAppeal = new javax.swing.JLabel();
+        lblAppealComments = new javax.swing.JLabel();
+        txtStudentIdAppeal = new javax.swing.JTextField();
+        txtGradeItemNameAppeal = new javax.swing.JTextField();
+        txtAppealComments = new javax.swing.JTextField();
+        btnSubmitAppeal = new javax.swing.JButton();
+        pnlStudentResult = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtAreaStudent = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -131,7 +153,7 @@ public class GradeBookForm extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(deleteStudentGradeRadio);
-        deleteStudentGradeRadio.setText("Delete Student Grade");
+        deleteStudentGradeRadio.setText("Delete All  Grades");
         deleteStudentGradeRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteStudentGradeRadioActionPerformed(evt);
@@ -217,7 +239,7 @@ public class GradeBookForm extends javax.swing.JFrame {
                 .addComponent(btnGradeItemSubmit)
                 .addGap(47, 47, 47)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         lblStudentName.setText("Student Id");
@@ -277,8 +299,8 @@ public class GradeBookForm extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addGroup(gradePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtGradeItemNameGrade, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                            .addComponent(txtStudentGrade)
-                            .addComponent(txtStudentName)))
+                            .addComponent(txtStudentGrade, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                            .addComponent(txtStudentName, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)))
                     .addGroup(gradePanelLayout.createSequentialGroup()
                         .addComponent(lblInstructorFeedback)
                         .addGap(18, 18, 18)
@@ -310,12 +332,20 @@ public class GradeBookForm extends javax.swing.JFrame {
                 .addGroup(gradePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblInstructorFeedback)
                     .addComponent(txtInstructorFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnGradeSubmit)
-                .addGap(43, 43, 43)
+                .addGap(50, 50, 50)
                 .addComponent(panelgradeResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(50, Short.MAX_VALUE))
         );
+
+        buttonGroup1.add(rbDeleteOneGrade);
+        rbDeleteOneGrade.setText("Delete One Grade");
+        rbDeleteOneGrade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbDeleteOneGradeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -331,12 +361,13 @@ public class GradeBookForm extends javax.swing.JFrame {
                     .addComponent(createGradeItemRadio)
                     .addComponent(updateGradeItemRadio)
                     .addComponent(getGradeItemRadio)
-                    .addComponent(deleteGradeItemRadio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                    .addComponent(deleteGradeItemRadio)
+                    .addComponent(rbDeleteOneGrade))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addComponent(gradeItemInputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gradePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,24 +389,188 @@ public class GradeBookForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(getStudentGradeRadio)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(deleteStudentGradeRadio))
+                        .addComponent(deleteStudentGradeRadio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rbDeleteOneGrade))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(gradeItemInputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(gradePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(327, Short.MAX_VALUE))
+                .addContainerGap(350, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Instructor", jPanel1);
+        studentPanel.addTab("Instructor", jPanel1);
+
+        buttonGroup2.add(rbGetStudentGrade);
+        rbGetStudentGrade.setText("Get Grades");
+        rbGetStudentGrade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbGetStudentGradeActionPerformed(evt);
+            }
+        });
+
+        buttonGroup2.add(rbSubmitAppeal);
+        rbSubmitAppeal.setText("Submit Appeal");
+        rbSubmitAppeal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbSubmitAppealActionPerformed(evt);
+            }
+        });
+
+        lblStudentId.setText("Student Id");
+
+        btnSubmitStudent.setText("Submit");
+        btnSubmitStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitStudentActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlGetStudentGradesLayout = new javax.swing.GroupLayout(pnlGetStudentGrades);
+        pnlGetStudentGrades.setLayout(pnlGetStudentGradesLayout);
+        pnlGetStudentGradesLayout.setHorizontalGroup(
+            pnlGetStudentGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlGetStudentGradesLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(lblStudentId)
+                .addGap(18, 18, 18)
+                .addGroup(pnlGetStudentGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtStudentIdStudent)
+                    .addGroup(pnlGetStudentGradesLayout.createSequentialGroup()
+                        .addComponent(btnSubmitStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 66, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        pnlGetStudentGradesLayout.setVerticalGroup(
+            pnlGetStudentGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlGetStudentGradesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlGetStudentGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblStudentId)
+                    .addComponent(txtStudentIdStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addComponent(btnSubmitStudent)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        lblStudentIdAppeal.setText("Student Id");
+
+        lblGradeItemAppeal.setText("Grade Item");
+
+        lblAppealComments.setText("Appeal Comments");
+
+        btnSubmitAppeal.setText("Submit");
+        btnSubmitAppeal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitAppealActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlAppealLayout = new javax.swing.GroupLayout(pnlAppeal);
+        pnlAppeal.setLayout(pnlAppealLayout);
+        pnlAppealLayout.setHorizontalGroup(
+            pnlAppealLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAppealLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlAppealLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblStudentIdAppeal)
+                    .addComponent(lblGradeItemAppeal)
+                    .addComponent(lblAppealComments))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGroup(pnlAppealLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlAppealLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtStudentIdAppeal)
+                        .addComponent(txtGradeItemNameAppeal)
+                        .addComponent(txtAppealComments, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
+                    .addComponent(btnSubmitAppeal, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47))
+        );
+        pnlAppealLayout.setVerticalGroup(
+            pnlAppealLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAppealLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlAppealLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblStudentIdAppeal)
+                    .addComponent(txtStudentIdAppeal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlAppealLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblGradeItemAppeal)
+                    .addComponent(txtGradeItemNameAppeal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlAppealLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAppealComments)
+                    .addComponent(txtAppealComments, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(btnSubmitAppeal)
+                .addGap(36, 36, 36))
+        );
+
+        txtAreaStudent.setColumns(20);
+        txtAreaStudent.setRows(5);
+        jScrollPane3.setViewportView(txtAreaStudent);
+
+        javax.swing.GroupLayout pnlStudentResultLayout = new javax.swing.GroupLayout(pnlStudentResult);
+        pnlStudentResult.setLayout(pnlStudentResultLayout);
+        pnlStudentResultLayout.setHorizontalGroup(
+            pnlStudentResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlStudentResultLayout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pnlStudentResultLayout.setVerticalGroup(
+            pnlStudentResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlStudentResultLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rbGetStudentGrade)
+                            .addComponent(rbSubmitAppeal))
+                        .addGap(78, 78, 78)
+                        .addComponent(pnlGetStudentGrades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(88, 88, 88)
+                        .addComponent(pnlAppeal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(196, 196, 196)
+                        .addComponent(pnlStudentResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(128, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlGetStudentGrades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(rbGetStudentGrade)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rbSubmitAppeal))
+                    .addComponent(pnlAppeal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlStudentResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(375, Short.MAX_VALUE))
+        );
+
+        studentPanel.addTab("Student", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(studentPanel)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(studentPanel)
         );
 
         pack();
@@ -463,39 +658,38 @@ public class GradeBookForm extends javax.swing.JFrame {
 
     private void btnGradeSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradeSubmitActionPerformed
         // TODO add your handling code here:
-        if(selectedAction.equals("AddGrade")){
+        txtAreaResult1.setText("");
+        if (selectedAction.equals("AddGrade")) {
             GradeBookEntry newObj = new GradeBookEntry();
             newObj.setStudentId(Long.parseLong(txtStudentName.getText()));
             newObj.setFeedBack(txtInstructorFeedback.getText());
             newObj.setGrade(Double.parseDouble(txtStudentGrade.getText()));
             newObj.setItemName(txtGradeItemNameGrade.getText());
-            
+
             String xmlString = Converter.convertFromObjectToXml(newObj, GradeBookEntry.class);
             ClientResponse clientResponse = restClient.createGradeEntryResource(xmlString);
-            txtAreaResult1.setText(clientResponse.toString() + "   is the result");
-            
-        }
-        else if(selectedAction.equals("UpdateGrade")){
-           GradeBookEntry newObj = new GradeBookEntry();
+            populateResult(clientResponse, "AddGrade");
+
+        } else if (selectedAction.equals("UpdateGrade")) {
+            GradeBookEntry newObj = new GradeBookEntry();
             newObj.setStudentId(Long.parseLong(txtStudentName.getText()));
             newObj.setFeedBack(txtInstructorFeedback.getText());
             newObj.setGrade(Double.parseDouble(txtStudentGrade.getText()));
             newObj.setItemName(txtGradeItemNameGrade.getText());
             String xmlString = Converter.convertFromObjectToXml(newObj, GradeBookEntry.class);
-            ClientResponse clientResponse = restClient.updateGradeEntryResource(xmlString,txtStudentName.getText());
-            txtAreaResult1.setText(clientResponse.toString() + "   is the result");
-            
-        }
-        else if(selectedAction.equals("GetGrade")){
+            ClientResponse clientResponse = restClient.updateGradeEntryResource(xmlString, txtStudentName.getText());
+            populateResult(clientResponse, "UpdateGrade");
+
+        } else if (selectedAction.equals("GetGrade")) {
             ClientResponse clientResponse = restClient.getGradeEntryResource(ClientResponse.class, txtStudentName.getText());
-            txtAreaResult1.setText(clientResponse.toString()+" is the result");
-        }
-        else if(selectedAction.equals("DeleteAllGrades")){
+            populateResult(clientResponse, "GetGrade");
+        } else if (selectedAction.equals("DeleteAllGrades")) {
             ClientResponse clientResponse = restClient.deleteAllGradeEntry(txtStudentName.getText());
-            txtAreaResult1.setText(clientResponse.toString()+" is the result");
-        }
-        else if(selectedAction.equals("DeleteOneGrade")){
-            
+            populateResult(clientResponse, "DeleteAllGrades");
+        } else if (selectedAction.equals("DeleteOneGrade")) {
+            ClientResponse clientResponse = restClient.deleteOneGradeEntry(txtStudentName.getText(), txtGradeItemNameGrade.getText());
+            populateResult(clientResponse, "DeleteOneGrade");
+
         }
     }//GEN-LAST:event_btnGradeSubmitActionPerformed
 
@@ -549,6 +743,7 @@ public class GradeBookForm extends javax.swing.JFrame {
 
     private void btnGradeItemSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradeItemSubmitActionPerformed
         // TODO add your handling code here:
+        txtAreaResult.setText("");
         if (selectedAction.equals("CreateGradeItem")) {
             GradeItem newObj = new GradeItem();
             newObj.setItemName(txtGradeItemName.getText());
@@ -556,7 +751,8 @@ public class GradeBookForm extends javax.swing.JFrame {
             newObj.setItemId(-1);
             String xmlString = Converter.convertFromObjectToXml(newObj, GradeItem.class);
             ClientResponse clientResponse = restClient.createGradeItemResource(xmlString);
-            txtAreaResult.setText(clientResponse.toString() + "   is the result");
+            //txtAreaResult.setText(clientResponse.toString() + "   is the result");
+            populateResult(clientResponse, "CreateGradeItem");
 
         } else if (selectedAction.equals("UpdateGradeItem")) {
             GradeItem newObj = new GradeItem();
@@ -565,26 +761,210 @@ public class GradeBookForm extends javax.swing.JFrame {
             newObj.setItemId(Integer.parseInt(txtItemId.getText()));
             String xmlString = Converter.convertFromObjectToXml(newObj, GradeItem.class);
             ClientResponse clientResponse = restClient.updateGradeItemResource(xmlString, txtItemId.getText());
-            txtAreaResult.setText(clientResponse.toString() + "   is the result");
-            
-        }
-        else if(selectedAction.equals("GetGradeItem")){
-            
+            //txtAreaResult.setText(clientResponse.toString() + "   is the result");
+            populateResult(clientResponse, "CreateGradeItem");
+        } else if (selectedAction.equals("GetGradeItem")) {
+
             ClientResponse clientResponse = restClient.getGradeItemResource(ClientResponse.class, txtItemId.getText());
-            txtAreaResult.setText(clientResponse.toString() + "   is the result");
-            
-        }
-        else if(selectedAction.equals("DeleteGradeItem")){
+            //txtAreaResult.setText(clientResponse.toString() + "   is the result");
+            populateResult(clientResponse, "GetGradeItem");
+        } else if (selectedAction.equals("DeleteGradeItem")) {
             ClientResponse clientResponse = restClient.deleteGradeItem(txtItemId.getText());
-            txtAreaResult.setText(clientResponse.toString());
+            //txtAreaResult.setText(clientResponse.toString());
+            populateResult(clientResponse, "DeleteGradeItem");
         }
     }//GEN-LAST:event_btnGradeItemSubmitActionPerformed
+
+    private void rbDeleteOneGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbDeleteOneGradeActionPerformed
+        // TODO add your handling code here:
+        selectedAction = "DeleteOneGrade";
+        this.gradeItemInputPanel.setVisible(false);
+        this.gradePanel.setVisible(true);
+        lblStudentName.setVisible(true);
+        txtStudentName.setVisible(true);
+        lblGradeItemNameGrade.setVisible(true);
+        txtGradeItemNameGrade.setVisible(true);
+        lblStudentGrade.setVisible(false);
+        txtStudentGrade.setVisible(false);
+        lblInstructorFeedback.setVisible(false);
+        txtInstructorFeedback.setVisible(false);
+        txtAreaResult1.setText("");
+    }//GEN-LAST:event_rbDeleteOneGradeActionPerformed
+
+    private void rbGetStudentGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbGetStudentGradeActionPerformed
+        // TODO add your handling code here:
+        selectedAction = "GetGrade";
+        txtAreaStudent.setText("");
+        pnlGetStudentGrades.setVisible(true);
+        pnlAppeal.setVisible(false);
+        pnlStudentResult.setVisible(true);
+    }//GEN-LAST:event_rbGetStudentGradeActionPerformed
+
+    private void rbSubmitAppealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbSubmitAppealActionPerformed
+        // TODO add your handling code here:
+        selectedAction = "SubmitAppeal";
+        txtAreaStudent.setText("");
+        pnlGetStudentGrades.setVisible(false);
+        pnlAppeal.setVisible(true);
+        pnlStudentResult.setVisible(true);
+    }//GEN-LAST:event_rbSubmitAppealActionPerformed
+
+    private void btnSubmitStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitStudentActionPerformed
+        // TODO add your handling code here:
+        txtAreaStudent.setText("");
+        ClientResponse clientResponse = restClient.getGradeEntryResource(ClientResponse.class, txtStudentIdStudent.getText());
+        populateResultforStudent(clientResponse, "GetGrade");
+    }//GEN-LAST:event_btnSubmitStudentActionPerformed
+
+    private void btnSubmitAppealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitAppealActionPerformed
+        // TODO add your handling code here:
+        if(selectedAction.equals("SubmitAppeal")){
+            GradeAppeal newAppeal = new GradeAppeal();
+            newAppeal.setGradeItemName(txtGradeItemNameAppeal.getText());
+            newAppeal.setAppealComments(txtAppealComments.getText());
+            newAppeal.setStudentId(Long.parseLong(txtStudentIdAppeal.getText()));
+            
+            String xmlString = Converter.convertFromObjectToXml(newAppeal, GradeAppeal.class);
+            ClientResponse clientResponse = restClient.createAppeal(xmlString);
+            populateResultforStudent(clientResponse, "SubmitAppeal");
+        }
+        
+        
+    }//GEN-LAST:event_btnSubmitAppealActionPerformed
 
     private void hidePanelsInitially() {
         lblGradeItemId.setVisible(false);
         txtItemId.setVisible(false);
         gradeItemInputPanel.setVisible(false);
         gradePanel.setVisible(false);
+        pnlAppeal.setVisible(false);
+        pnlGetStudentGrades.setVisible(false);
+        pnlStudentResult.setVisible(false);
+    }
+    
+    public void populateResultforStudent(ClientResponse clientResponse, String method){
+        String entity = "";
+        StringBuilder result = new StringBuilder();
+        try {
+            if (method.equals("GetGrade")) {
+            entity = clientResponse.getEntity(String.class);
+                result.append("Status code = ").append(clientResponse.getStatus()).append("\n");
+                if (clientResponse.getStatus() == Response.Status.OK.getStatusCode()) {
+                    List<GradeBookEntry> listitem = (List<GradeBookEntry>) Converter.ReadXML(entity);
+                    result.append("Student Id = ").append(listitem.get(0).getStudentId());
+                    for (GradeBookEntry item : listitem) {
+                        result.append("\n").append("Grade Item Name = ").append(item.getItemName()).append("\n")
+                                .append("Grade = ").append(item.getGrade()).append("\n").append("Feedback = ").append(item.getFeedBack()).append("\n");
+                    }
+                } else {
+                    result.append(entity).append("\n");
+                }
+                txtAreaStudent.setText(result.toString());
+            }
+            else if(method.equals("SubmitAppeal")){
+                entity = clientResponse.getEntity(String.class);
+                GradeAppeal item = (GradeAppeal) Converter.convertFromXmlToObject(entity, GradeAppeal.class);
+                result.append("Student Id = ").append(item.getStudentId()).append("\n").append("Grade Item Name = ").append(item.getGradeItemName()).append("\n")
+                        .append("Student Comments = ").append(item.getAppealComments()).append("\n");
+                if (clientResponse.getStatus() == Response.Status.CREATED.getStatusCode()) {
+                    result.append("Location = ").append(clientResponse.getLocation().toString()).append("\n");
+                }
+                result.append("Status code = ").append(clientResponse.getStatus());
+                txtAreaStudent.setText(result.toString());
+            }
+        }
+        catch(Exception ex){
+            
+        }
+    }
+    
+    public void populateResult(ClientResponse clientResponse, String method) {
+
+        String entity = "";
+        //clientResponse.getStatus() == Response.Status.OK.getStatusCode()
+        StringBuilder result = new StringBuilder();
+        try {
+            if (method.equals("CreateGradeItem")) {
+                entity = clientResponse.getEntity(String.class);
+                GradeItem item = (GradeItem) Converter.convertFromXmlToObject(entity, GradeItem.class);
+                result.append("Id = ").append(item.getItemId()).append("\n").append("Item Name = ").append(item.getItemName()).append("\n")
+                        .append("Weightage assigned = ").append(item.getItemWeight()).append("\n");
+                if (clientResponse.getStatus() == Response.Status.CREATED.getStatusCode()) {
+                    result.append("Location = ").append(clientResponse.getLocation().toString()).append("\n");
+                }
+                result.append("Status code = ").append(clientResponse.getStatus());
+                txtAreaResult.setText(result.toString());
+            } else if (method.equals("GetGradeItem")) {
+                entity = clientResponse.getEntity(String.class);
+                result.append("Status code = ").append(clientResponse.getStatus()).append("\n");
+                if (clientResponse.getStatus() == Response.Status.OK.getStatusCode()) {
+                    GradeItem item = (GradeItem) Converter.convertFromXmlToObject(entity, GradeItem.class);
+                    result.append("Id = ").append(item.getItemId()).append("\n").append("Item Name = ").append(item.getItemName()).append("\n")
+                            .append("Weightage assigned = ").append(item.getItemWeight()).append("\n");
+                } else {
+                    result.append("\n").append(entity);
+                }
+                txtAreaResult.setText(result.toString());
+            } else if (method.equals("DeleteGradeItem")) {
+                result.append("Status code = ").append(clientResponse.getStatus()).append("\n");
+
+                txtAreaResult.setText(result.toString());
+            } else if (method.equals("UpdateGradeItem")) {
+                entity = clientResponse.getEntity(String.class);
+                GradeItem item = (GradeItem) Converter.convertFromXmlToObject(entity, GradeItem.class);
+                result.append("Id = ").append(item.getItemId()).append("\n").append("Item Name = ").append(item.getItemName()).append("\n")
+                        .append("Weightage assigned = ").append(item.getItemWeight()).append("\n");
+                result.append("Status code = ").append(clientResponse.getStatus());
+                txtAreaResult.setText(result.toString());
+            } else if (method.equals("AddGrade")) {
+                entity = clientResponse.getEntity(String.class);
+                if (clientResponse.getStatus() != Response.Status.OK.getStatusCode()) {
+                    GradeBookEntry item = (GradeBookEntry) Converter.convertFromXmlToObject(entity, GradeBookEntry.class);
+                    result.append("Student Id = ").append(item.getStudentId()).append("\n").append("Grade Item Name = ").append(item.getItemName()).append("\n")
+                            .append("Grade = ").append(item.getGrade()).append("\n").append("Feedback = ").append(item.getFeedBack()).append("\n");
+                } else {
+                    result.append(entity).append("\n");
+                }
+                if (clientResponse.getStatus() == Response.Status.CREATED.getStatusCode()) {
+                    result.append("Location = ").append(clientResponse.getLocation().toString()).append("\n");
+                }
+                result.append("Status code = ").append(clientResponse.getStatus());
+                txtAreaResult1.setText(result.toString());
+            } else if (method.equals("UpdateGrade")) {
+                entity = clientResponse.getEntity(String.class);
+
+                GradeBookEntry item = (GradeBookEntry) Converter.convertFromXmlToObject(entity, GradeBookEntry.class);
+                result.append("Student Id = ").append(item.getStudentId()).append("\n").append("Grade Item Name = ").append(item.getItemName()).append("\n")
+                        .append("Grade = ").append(item.getGrade()).append("\n").append("Feedback = ").append(item.getFeedBack()).append("\n");
+
+                result.append("Status code = ").append(clientResponse.getStatus());
+                txtAreaResult1.setText(result.toString());
+            } else if (method.equals("GetGrade")) {
+                entity = clientResponse.getEntity(String.class);
+                result.append("Status code = ").append(clientResponse.getStatus()).append("\n");
+                if (clientResponse.getStatus() == Response.Status.OK.getStatusCode()) {
+                    List<GradeBookEntry> listitem = (List<GradeBookEntry>) Converter.ReadXML(entity);
+                    result.append("Student Id = ").append(listitem.get(0).getStudentId());
+                    for (GradeBookEntry item : listitem) {
+                        result.append("\n").append("Grade Item Name = ").append(item.getItemName()).append("\n")
+                                .append("Grade = ").append(item.getGrade()).append("\n").append("Feedback = ").append(item.getFeedBack()).append("\n");
+                    }
+                } else {
+                    result.append(entity).append("\n");
+                }
+                txtAreaResult1.setText(result.toString());
+
+            } else if (method.equals("DeleteAllGrades")) {
+                result.append("Status code = ").append(clientResponse.getStatus()).append("\n");
+                txtAreaResult1.setText(result.toString());
+            } else if (method.equals("DeleteOneGrade")) {
+                result.append("Status code = ").append(clientResponse.getStatus()).append("\n");
+                txtAreaResult1.setText(result.toString());
+            }
+
+        } catch (Exception ex) {
+
+        }
     }
 
     /**
@@ -632,7 +1012,10 @@ public class GradeBookForm extends javax.swing.JFrame {
     private javax.swing.JRadioButton addStudentGradeRadio;
     private javax.swing.JButton btnGradeItemSubmit;
     private javax.swing.JButton btnGradeSubmit;
+    private javax.swing.JButton btnSubmitAppeal;
+    private javax.swing.JButton btnSubmitStudent;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JRadioButton createGradeItemRadio;
     private javax.swing.JRadioButton deleteGradeItemRadio;
     private javax.swing.JRadioButton deleteStudentGradeRadio;
@@ -642,25 +1025,42 @@ public class GradeBookForm extends javax.swing.JFrame {
     private javax.swing.JPanel gradePanel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lblAppealComments;
+    private javax.swing.JLabel lblGradeItemAppeal;
     private javax.swing.JLabel lblGradeItemId;
     private javax.swing.JLabel lblGradeItemName;
     private javax.swing.JLabel lblGradeItemNameGrade;
     private javax.swing.JLabel lblGradeItemWeight;
     private javax.swing.JLabel lblInstructorFeedback;
     private javax.swing.JLabel lblStudentGrade;
+    private javax.swing.JLabel lblStudentId;
+    private javax.swing.JLabel lblStudentIdAppeal;
     private javax.swing.JLabel lblStudentName;
     private javax.swing.JPanel panelgradeResult;
+    private javax.swing.JPanel pnlAppeal;
+    private javax.swing.JPanel pnlGetStudentGrades;
+    private javax.swing.JPanel pnlStudentResult;
+    private javax.swing.JRadioButton rbDeleteOneGrade;
+    private javax.swing.JRadioButton rbGetStudentGrade;
+    private javax.swing.JRadioButton rbSubmitAppeal;
+    private javax.swing.JTabbedPane studentPanel;
+    private javax.swing.JTextField txtAppealComments;
     private javax.swing.JTextArea txtAreaResult;
     private javax.swing.JTextArea txtAreaResult1;
+    private javax.swing.JTextArea txtAreaStudent;
     private javax.swing.JTextField txtGradeItemName;
+    private javax.swing.JTextField txtGradeItemNameAppeal;
     private javax.swing.JTextField txtGradeItemNameGrade;
     private javax.swing.JTextField txtGradeItemWeight;
     private javax.swing.JTextField txtInstructorFeedback;
     private javax.swing.JTextField txtItemId;
     private javax.swing.JTextField txtStudentGrade;
+    private javax.swing.JTextField txtStudentIdAppeal;
+    private javax.swing.JTextField txtStudentIdStudent;
     private javax.swing.JTextField txtStudentName;
     private javax.swing.JRadioButton updateGradeItemRadio;
     private javax.swing.JRadioButton updateStudentGradeRadio;

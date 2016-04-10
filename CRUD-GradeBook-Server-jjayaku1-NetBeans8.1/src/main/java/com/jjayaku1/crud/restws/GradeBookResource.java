@@ -282,7 +282,7 @@ public class GradeBookResource {
                     servletContext.setAttribute("gradingItems", gradingItems);
                     LOG.info("Deleted the grade item resouce {}", foundItem);
 
-                    response = Response.status(Response.Status.NO_CONTENT).build();
+                    response = Response.status(Response.Status.NO_CONTENT).entity("Deleted successfully").build();
                 } else {
                     LOG.info("Creating a {} {} Status Response", Response.Status.NOT_FOUND.getStatusCode(), Response.Status.NOT_FOUND.getReasonPhrase());
                     LOG.debug("Requested resource is not found");
@@ -295,7 +295,7 @@ public class GradeBookResource {
 
             LOG.info("Creating a {} {} Status Response", Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), Response.Status.INTERNAL_SERVER_ERROR.getReasonPhrase());
 
-            response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(id).build();
+            response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
 
         LOG.debug("Generated response {}", response);
@@ -342,7 +342,7 @@ public class GradeBookResource {
                 if (!isItemFound) {
                     LOG.info("Grade book item that is sent is not found");
                     LOG.info("Cannot add grade entry, returning response {} {}", Response.Status.OK.getStatusCode(), Response.Status.OK.getReasonPhrase());
-                    response = Response.status(Response.Status.OK).entity("The given grade item " + newGradeBookEntry.getItemName() + "is not found, cannot add grade entry in book").build();
+                    response = Response.status(Response.Status.OK).entity("The given grade item " + newGradeBookEntry.getItemName() + " is not found, cannot add grade entry in book").build();
                     return response;
                 }
 
@@ -426,10 +426,13 @@ public class GradeBookResource {
                 LOG.info("Creating the response {} {}", Response.Status.OK.getStatusCode(), Response.Status.OK.getReasonPhrase());
                 List<GradeBookEntry> studentGradeEntry = gradeBook.get(studentId);
                 String xmlString = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>";
+                xmlString= xmlString + "\n";
+        xmlString = xmlString + "<GradeBook xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='CRUD'>";
                 for (GradeBookEntry entry : studentGradeEntry) {
                     xmlString = xmlString + "\n";
                     xmlString = xmlString + Converter.buildGradeBookEntry(entry, GradeBookEntry.class);
                 }
+                xmlString = xmlString + "\n"+ "</GradeBook>";
                 //xmlString = Converter.convertFromObjectToXml(studentGradeEntry, GradeItem.class);
 
                 response = Response.status(Response.Status.OK).entity(xmlString).build();
@@ -518,7 +521,7 @@ public class GradeBookResource {
         } catch (Exception ex) {
             LOG.debug("Catch All exception");
             LOG.info("Creating a {} {} Status Response", Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), Response.Status.INTERNAL_SERVER_ERROR.getReasonPhrase());
-            response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(id + " " + ex.getMessage()).build();
+            response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(content).build();
         }
 
         LOG.debug("Returning the value {}", response);
@@ -589,13 +592,13 @@ public class GradeBookResource {
             LOG.debug("Catch NumberFormatException");
 
             LOG.info("Creating a {} {} Status Response", Response.Status.BAD_REQUEST.getStatusCode(), Response.Status.BAD_REQUEST.getReasonPhrase());
-            response = Response.status(Response.Status.BAD_REQUEST).entity(studentid).build();
+            response = Response.status(Response.Status.BAD_REQUEST).build();
 
         } catch (Exception ex) {
             LOG.debug("Catch All exception");
 
             LOG.info("Creating a {} {} Status Response", Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), Response.Status.INTERNAL_SERVER_ERROR.getReasonPhrase());
-            response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(studentid).build();
+            response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
         LOG.debug("Returning the value {}", response);
         return response;
@@ -640,13 +643,13 @@ public class GradeBookResource {
             LOG.debug("Catch NumberFormatException");
 
             LOG.info("Creating a {} {} Status Response", Response.Status.BAD_REQUEST.getStatusCode(), Response.Status.BAD_REQUEST.getReasonPhrase());
-            response = Response.status(Response.Status.BAD_REQUEST).entity(studentid).build();
+            response = Response.status(Response.Status.BAD_REQUEST).build();
 
         } catch (Exception ex) {
             LOG.debug("Catch All exception");
 
             LOG.info("Creating a {} {} Status Response", Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), Response.Status.INTERNAL_SERVER_ERROR.getReasonPhrase());
-            response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(studentid).build();
+            response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
         LOG.debug("Returning the value {}", response);
         return response;

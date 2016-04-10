@@ -99,5 +99,20 @@ public class GradeDetailsCrud {
 
         return webResource.path("DeleteAllGradeEntry").path(id).delete(ClientResponse.class);
     }
+    
+    public ClientResponse deleteOneGradeEntry(String id, String name) throws UniformInterfaceException {
+        LOG.info("Initiating a Delete request");
+        LOG.debug("Id = {}", id);
+        LOG.debug("Id = {}", name);
+
+        return webResource.path("DeleteGradeEntry").path(id).path(name).delete(ClientResponse.class);
+    }
+    
+    public ClientResponse createAppeal(Object requestEntity) throws UniformInterfaceException {
+        LOG.info("Initating a create request to add a grade item");
+        LOG.debug("XML String = {}", (String) requestEntity);
+
+        return webResource.path("AddAppeal").type(MediaType.APPLICATION_XML).post(ClientResponse.class, requestEntity);
+    }
 
 }
