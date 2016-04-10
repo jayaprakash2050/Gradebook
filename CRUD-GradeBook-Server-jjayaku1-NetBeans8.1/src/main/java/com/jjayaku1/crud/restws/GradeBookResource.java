@@ -6,7 +6,6 @@
 package com.jjayaku1.crud.restws;
 
 import java.net.URI;
-import java.util.Random;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.PathParam;
@@ -85,7 +84,8 @@ public class GradeBookResource {
                 newGradeItem.setItemId(newGradeItemId);
 
                 String xmlString = Converter.convertFromObjectToXml(newGradeItem, GradeItem.class);
-                URI locationURI = URI.create(context.getAbsolutePath() + "/" + Integer.toString(newGradeItemId));
+                
+                URI locationURI = URI.create(context.getBaseUri()+ "GradeItem/" + Integer.toString(newGradeItemId));
                 gradingItems.add(newGradeItem);
                 servletContext.setAttribute("gradingItems", gradingItems);
                 servletContext.setAttribute("newGradeItemId", newGradeItemId);
@@ -367,7 +367,7 @@ public class GradeBookResource {
                     servletContext.setAttribute("gradeBook", gradeBook);
                     LOG.info("New entry has been added");
                     LOG.info("Creating response {}, {}", Response.Status.CREATED.getStatusCode(), Response.Status.CREATED.getReasonPhrase());
-                    URI locationURI = URI.create(context.getAbsolutePath() + "/" + Long.toString(newGradeBookEntry.getStudentId()));
+                    URI locationURI = URI.create(context.getBaseUri()+ "GradeBook/" + Long.toString(newGradeBookEntry.getStudentId()));
                     response = Response.status(Response.Status.CREATED).location(locationURI).entity(content).build();
 
                 } else {
@@ -382,7 +382,7 @@ public class GradeBookResource {
                 newEntries.add(newGradeBookEntry);
                 gradeBook.put(newGradeBookEntry.getStudentId(), newEntries);
                 servletContext.setAttribute("gradeBook", gradeBook);
-                URI locationURI = URI.create(context.getAbsolutePath() + "/" + Long.toString(newGradeBookEntry.getStudentId()));
+                URI locationURI = URI.create(context.getBaseUri()+ "GradeBook/" + Long.toString(newGradeBookEntry.getStudentId()));
                 response = Response.status(Response.Status.CREATED).location(locationURI).entity(content).build();
             }
 

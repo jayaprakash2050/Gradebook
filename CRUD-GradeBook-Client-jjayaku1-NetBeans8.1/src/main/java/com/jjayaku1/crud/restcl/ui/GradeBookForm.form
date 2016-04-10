@@ -105,7 +105,7 @@
                               <Component id="gradePanel" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="350" max="32767" attributes="0"/>
+                      <EmptySpace pref="412" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -215,15 +215,23 @@
                                       <Component id="lblGradeItemId" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtGradeItemName" pref="128" max="32767" attributes="0"/>
-                                      <Component id="txtGradeItemWeight" max="32767" attributes="0"/>
-                                      <Component id="btnGradeItemSubmit" min="-2" pref="113" max="-2" attributes="0"/>
-                                      <Component id="txtItemId" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblErrorMessage" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="txtGradeItemName" pref="128" max="32767" attributes="0"/>
+                                          <Component id="txtGradeItemWeight" max="32767" attributes="0"/>
+                                          <Component id="btnGradeItemSubmit" min="-2" pref="113" max="-2" attributes="0"/>
+                                          <Component id="txtItemId" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
                           <EmptySpace pref="43" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -247,8 +255,12 @@
                           </Group>
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Component id="btnGradeItemSubmit" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="lblErrorMessage" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -326,6 +338,10 @@
                     </Container>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JLabel" name="lblErrorMessage">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel2">
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="gradePanel">
@@ -355,6 +371,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="btnGradeSubmit" min="-2" pref="105" max="-2" attributes="0"/>
                                       <Component id="txtInstructorFeedback" min="-2" pref="147" max="-2" attributes="0"/>
+                                      <Component id="lblErrorMessageGrade" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -392,7 +409,9 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnGradeSubmit" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="lblErrorMessageGrade" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="panelgradeResult" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="50" max="32767" attributes="0"/>
                       </Group>
@@ -479,6 +498,8 @@
                     </Container>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JLabel" name="lblErrorMessageGrade">
+                </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JRadioButton" name="rbDeleteOneGrade">
@@ -543,7 +564,7 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="pnlStudentResult" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="375" max="32767" attributes="0"/>
+                      <EmptySpace pref="389" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -583,7 +604,10 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txtStudentIdStudent" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="btnSubmitStudent" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="btnSubmitStudent" min="-2" pref="82" max="-2" attributes="0"/>
+                                      <Component id="lblErrorStudenId" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace min="0" pref="66" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -601,6 +625,8 @@
                           </Group>
                           <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="btnSubmitStudent" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="lblErrorStudenId" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -622,6 +648,8 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubmitStudentActionPerformed"/>
                   </Events>
                 </Component>
+                <Component class="javax.swing.JLabel" name="lblErrorStudenId">
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="pnlAppeal">
@@ -638,6 +666,7 @@
                           </Group>
                           <EmptySpace pref="50" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblErrorAppeal" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="txtStudentIdAppeal" max="32767" attributes="0"/>
                                   <Component id="txtGradeItemNameAppeal" max="32767" attributes="0"/>
@@ -667,9 +696,11 @@
                               <Component id="lblAppealComments" min="-2" max="-2" attributes="0"/>
                               <Component id="txtAppealComments" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="38" max="32767" attributes="0"/>
+                          <EmptySpace pref="65" max="32767" attributes="0"/>
                           <Component id="btnSubmitAppeal" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="lblErrorAppeal" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -703,6 +734,8 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubmitAppealActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblErrorAppeal">
                 </Component>
               </SubComponents>
             </Container>

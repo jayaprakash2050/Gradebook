@@ -61,6 +61,8 @@ public class GradeBookForm extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaResult = new javax.swing.JTextArea();
+        lblErrorMessage = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         gradePanel = new javax.swing.JPanel();
         lblStudentName = new javax.swing.JLabel();
         lblGradeItemNameGrade = new javax.swing.JLabel();
@@ -74,6 +76,7 @@ public class GradeBookForm extends javax.swing.JFrame {
         panelgradeResult = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtAreaResult1 = new javax.swing.JTextArea();
+        lblErrorMessageGrade = new javax.swing.JLabel();
         rbDeleteOneGrade = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
         rbGetStudentGrade = new javax.swing.JRadioButton();
@@ -82,6 +85,7 @@ public class GradeBookForm extends javax.swing.JFrame {
         lblStudentId = new javax.swing.JLabel();
         txtStudentIdStudent = new javax.swing.JTextField();
         btnSubmitStudent = new javax.swing.JButton();
+        lblErrorStudenId = new javax.swing.JLabel();
         pnlAppeal = new javax.swing.JPanel();
         lblStudentIdAppeal = new javax.swing.JLabel();
         lblGradeItemAppeal = new javax.swing.JLabel();
@@ -90,6 +94,7 @@ public class GradeBookForm extends javax.swing.JFrame {
         txtGradeItemNameAppeal = new javax.swing.JTextField();
         txtAppealComments = new javax.swing.JTextField();
         btnSubmitAppeal = new javax.swing.JButton();
+        lblErrorAppeal = new javax.swing.JLabel();
         pnlStudentResult = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtAreaStudent = new javax.swing.JTextArea();
@@ -213,12 +218,18 @@ public class GradeBookForm extends javax.swing.JFrame {
                             .addComponent(lblGradeItemWeight)
                             .addComponent(lblGradeItemId))
                         .addGap(36, 36, 36)
-                        .addGroup(gradeItemInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtGradeItemName, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
-                            .addComponent(txtGradeItemWeight)
-                            .addComponent(btnGradeItemSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtItemId))))
+                        .addGroup(gradeItemInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblErrorMessage)
+                            .addGroup(gradeItemInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtGradeItemName, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                                .addComponent(txtGradeItemWeight)
+                                .addComponent(btnGradeItemSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtItemId)))))
                 .addContainerGap(43, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradeItemInputPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(25, 25, 25))
         );
         gradeItemInputPanelLayout.setVerticalGroup(
             gradeItemInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,8 +248,12 @@ public class GradeBookForm extends javax.swing.JFrame {
                     .addComponent(txtItemId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addComponent(btnGradeItemSubmit)
-                .addGap(47, 47, 47)
+                .addGap(22, 22, 22)
+                .addComponent(lblErrorMessage)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -306,7 +321,8 @@ public class GradeBookForm extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(gradePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnGradeSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtInstructorFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtInstructorFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblErrorMessageGrade))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradePanelLayout.createSequentialGroup()
                 .addContainerGap(26, Short.MAX_VALUE)
@@ -334,7 +350,9 @@ public class GradeBookForm extends javax.swing.JFrame {
                     .addComponent(txtInstructorFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnGradeSubmit)
-                .addGap(50, 50, 50)
+                .addGap(25, 25, 25)
+                .addComponent(lblErrorMessageGrade)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelgradeResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(50, Short.MAX_VALUE))
         );
@@ -395,7 +413,7 @@ public class GradeBookForm extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(gradeItemInputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(gradePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(350, Short.MAX_VALUE))
+                .addContainerGap(412, Short.MAX_VALUE))
         );
 
         studentPanel.addTab("Instructor", jPanel1);
@@ -436,7 +454,9 @@ public class GradeBookForm extends javax.swing.JFrame {
                 .addGroup(pnlGetStudentGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtStudentIdStudent)
                     .addGroup(pnlGetStudentGradesLayout.createSequentialGroup()
-                        .addComponent(btnSubmitStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlGetStudentGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnSubmitStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblErrorStudenId))
                         .addGap(0, 66, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -449,6 +469,8 @@ public class GradeBookForm extends javax.swing.JFrame {
                     .addComponent(txtStudentIdStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addComponent(btnSubmitStudent)
+                .addGap(18, 18, 18)
+                .addComponent(lblErrorStudenId)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -477,6 +499,7 @@ public class GradeBookForm extends javax.swing.JFrame {
                     .addComponent(lblAppealComments))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(pnlAppealLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblErrorAppeal)
                     .addGroup(pnlAppealLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(txtStudentIdAppeal)
                         .addComponent(txtGradeItemNameAppeal)
@@ -499,9 +522,11 @@ public class GradeBookForm extends javax.swing.JFrame {
                 .addGroup(pnlAppealLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblAppealComments)
                     .addComponent(txtAppealComments, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addComponent(btnSubmitAppeal)
-                .addGap(36, 36, 36))
+                .addGap(18, 18, 18)
+                .addComponent(lblErrorAppeal)
+                .addGap(25, 25, 25))
         );
 
         txtAreaStudent.setColumns(20);
@@ -557,7 +582,7 @@ public class GradeBookForm extends javax.swing.JFrame {
                     .addComponent(pnlAppeal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlStudentResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(375, Short.MAX_VALUE))
+                .addContainerGap(389, Short.MAX_VALUE))
         );
 
         studentPanel.addTab("Student", jPanel3);
@@ -588,6 +613,10 @@ public class GradeBookForm extends javax.swing.JFrame {
         txtGradeItemName.setVisible(true);
         txtGradeItemWeight.setVisible(true);
         txtAreaResult.setText("");
+        lblErrorMessageGrade.setText("");
+        lblErrorMessage.setText("");
+        lblErrorMessageGrade.setText("");
+        lblErrorMessage.setText("");
     }//GEN-LAST:event_updateGradeItemRadioActionPerformed
 
     private void getGradeItemRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getGradeItemRadioActionPerformed
@@ -602,6 +631,8 @@ public class GradeBookForm extends javax.swing.JFrame {
         txtGradeItemName.setVisible(false);
         txtGradeItemWeight.setVisible(false);
         txtAreaResult.setText("");
+        lblErrorMessageGrade.setText("");
+        lblErrorMessage.setText("");
     }//GEN-LAST:event_getGradeItemRadioActionPerformed
 
     private void deleteGradeItemRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteGradeItemRadioActionPerformed
@@ -616,6 +647,8 @@ public class GradeBookForm extends javax.swing.JFrame {
         txtGradeItemName.setVisible(false);
         txtGradeItemWeight.setVisible(false);
         txtAreaResult.setText("");
+        lblErrorMessageGrade.setText("");
+        lblErrorMessage.setText("");
     }//GEN-LAST:event_deleteGradeItemRadioActionPerformed
 
     private void addStudentGradeRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStudentGradeRadioActionPerformed
@@ -646,6 +679,8 @@ public class GradeBookForm extends javax.swing.JFrame {
         txtGradeItemName.setVisible(true);
         txtGradeItemWeight.setVisible(true);
         txtAreaResult.setText("");
+        lblErrorMessageGrade.setText("");
+        lblErrorMessage.setText("");
     }//GEN-LAST:event_createGradeItemRadioActionPerformed
 
     private void txtGradeItemNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGradeItemNameActionPerformed
@@ -660,6 +695,14 @@ public class GradeBookForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtAreaResult1.setText("");
         if (selectedAction.equals("AddGrade")) {
+            try {
+                Long.parseLong(txtStudentName.getText());
+                Double.parseDouble(txtStudentGrade.getText());
+            } catch (NumberFormatException e) {
+                //not a double
+                lblErrorMessageGrade.setText("Grade & Student Id should be a number");
+                return;
+            }
             GradeBookEntry newObj = new GradeBookEntry();
             newObj.setStudentId(Long.parseLong(txtStudentName.getText()));
             newObj.setFeedBack(txtInstructorFeedback.getText());
@@ -671,6 +714,14 @@ public class GradeBookForm extends javax.swing.JFrame {
             populateResult(clientResponse, "AddGrade");
 
         } else if (selectedAction.equals("UpdateGrade")) {
+            try {
+                Long.parseLong(txtStudentName.getText());
+                Double.parseDouble(txtStudentGrade.getText());
+            } catch (NumberFormatException e) {
+                //not a double
+                lblErrorMessageGrade.setText("Grade & Student Id should be a number");
+                return;
+            }
             GradeBookEntry newObj = new GradeBookEntry();
             newObj.setStudentId(Long.parseLong(txtStudentName.getText()));
             newObj.setFeedBack(txtInstructorFeedback.getText());
@@ -681,12 +732,36 @@ public class GradeBookForm extends javax.swing.JFrame {
             populateResult(clientResponse, "UpdateGrade");
 
         } else if (selectedAction.equals("GetGrade")) {
+            try {
+                Long.parseLong(txtStudentName.getText());
+                //Double.parseDouble(txtStudentGrade.getText());
+            } catch (NumberFormatException e) {
+                //not a double
+                lblErrorMessageGrade.setText("Student Id should be a number");
+                return;
+            }
             ClientResponse clientResponse = restClient.getGradeEntryResource(ClientResponse.class, txtStudentName.getText());
             populateResult(clientResponse, "GetGrade");
         } else if (selectedAction.equals("DeleteAllGrades")) {
+            try {
+                Long.parseLong(txtStudentName.getText());
+                //Double.parseDouble(txtStudentGrade.getText());
+            } catch (NumberFormatException e) {
+                //not a double
+                lblErrorMessageGrade.setText("Student Id should be a number");
+                return;
+            }
             ClientResponse clientResponse = restClient.deleteAllGradeEntry(txtStudentName.getText());
             populateResult(clientResponse, "DeleteAllGrades");
         } else if (selectedAction.equals("DeleteOneGrade")) {
+            try {
+                Long.parseLong(txtStudentName.getText());
+                //Double.parseDouble(txtStudentGrade.getText());
+            } catch (NumberFormatException e) {
+                //not a double
+                lblErrorMessageGrade.setText("Student Id should be a number");
+                return;
+            }
             ClientResponse clientResponse = restClient.deleteOneGradeEntry(txtStudentName.getText(), txtGradeItemNameGrade.getText());
             populateResult(clientResponse, "DeleteOneGrade");
 
@@ -707,6 +782,8 @@ public class GradeBookForm extends javax.swing.JFrame {
         lblInstructorFeedback.setVisible(true);
         txtInstructorFeedback.setVisible(true);
         txtAreaResult1.setText("");
+        lblErrorMessageGrade.setText("");
+        lblErrorMessage.setText("");
     }//GEN-LAST:event_updateStudentGradeRadioActionPerformed
 
     private void getStudentGradeRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getStudentGradeRadioActionPerformed
@@ -723,6 +800,9 @@ public class GradeBookForm extends javax.swing.JFrame {
         lblInstructorFeedback.setVisible(false);
         txtInstructorFeedback.setVisible(false);
         txtAreaResult1.setText("");
+        lblErrorMessageGrade.setText("");
+        lblErrorMessage.setText("");
+        
     }//GEN-LAST:event_getStudentGradeRadioActionPerformed
 
     private void deleteStudentGradeRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteStudentGradeRadioActionPerformed
@@ -739,12 +819,21 @@ public class GradeBookForm extends javax.swing.JFrame {
         lblInstructorFeedback.setVisible(false);
         txtInstructorFeedback.setVisible(false);
         txtAreaResult1.setText("");
+        lblErrorMessageGrade.setText("");
+        lblErrorMessage.setText("");
     }//GEN-LAST:event_deleteStudentGradeRadioActionPerformed
 
     private void btnGradeItemSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradeItemSubmitActionPerformed
         // TODO add your handling code here:
         txtAreaResult.setText("");
         if (selectedAction.equals("CreateGradeItem")) {
+            try {
+                Double.parseDouble(txtGradeItemWeight.getText());
+            } catch (NumberFormatException e) {
+                //not a double
+                lblErrorMessage.setText("Grade weight should be a number");
+                return;
+            }
             GradeItem newObj = new GradeItem();
             newObj.setItemName(txtGradeItemName.getText());
             newObj.setItemWeight(Double.parseDouble(txtGradeItemWeight.getText()));
@@ -755,6 +844,14 @@ public class GradeBookForm extends javax.swing.JFrame {
             populateResult(clientResponse, "CreateGradeItem");
 
         } else if (selectedAction.equals("UpdateGradeItem")) {
+            try {
+                Double.parseDouble(txtGradeItemWeight.getText());
+                Integer.parseInt(txtItemId.getText());
+            } catch (NumberFormatException e) {
+                //not a double
+                lblErrorMessage.setText("Grade weight & Grade Item Id should be a number");
+                return;
+            }
             GradeItem newObj = new GradeItem();
             newObj.setItemName(txtGradeItemName.getText());
             newObj.setItemWeight(Double.parseDouble(txtGradeItemWeight.getText()));
@@ -764,11 +861,26 @@ public class GradeBookForm extends javax.swing.JFrame {
             //txtAreaResult.setText(clientResponse.toString() + "   is the result");
             populateResult(clientResponse, "CreateGradeItem");
         } else if (selectedAction.equals("GetGradeItem")) {
-
+            try {
+                //Double.parseDouble(txtGradeItemWeight.getText());
+                Integer.parseInt(txtItemId.getText());
+            } catch (NumberFormatException e) {
+                //not a double
+                lblErrorMessage.setText("Grade Item Id should be a number");
+                return;
+            }
             ClientResponse clientResponse = restClient.getGradeItemResource(ClientResponse.class, txtItemId.getText());
             //txtAreaResult.setText(clientResponse.toString() + "   is the result");
             populateResult(clientResponse, "GetGradeItem");
         } else if (selectedAction.equals("DeleteGradeItem")) {
+            try {
+                //Double.parseDouble(txtGradeItemWeight.getText());
+                Integer.parseInt(txtItemId.getText());
+            } catch (NumberFormatException e) {
+                //not a double
+                lblErrorMessage.setText("Grade Item Id should be a number");
+                return;
+            }
             ClientResponse clientResponse = restClient.deleteGradeItem(txtItemId.getText());
             //txtAreaResult.setText(clientResponse.toString());
             populateResult(clientResponse, "DeleteGradeItem");
@@ -789,6 +901,8 @@ public class GradeBookForm extends javax.swing.JFrame {
         lblInstructorFeedback.setVisible(false);
         txtInstructorFeedback.setVisible(false);
         txtAreaResult1.setText("");
+        lblErrorMessageGrade.setText("");
+        lblErrorMessage.setText("");
     }//GEN-LAST:event_rbDeleteOneGradeActionPerformed
 
     private void rbGetStudentGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbGetStudentGradeActionPerformed
@@ -798,6 +912,8 @@ public class GradeBookForm extends javax.swing.JFrame {
         pnlGetStudentGrades.setVisible(true);
         pnlAppeal.setVisible(false);
         pnlStudentResult.setVisible(true);
+        lblErrorAppeal.setText("");
+        lblErrorStudenId.setText("");
     }//GEN-LAST:event_rbGetStudentGradeActionPerformed
 
     private void rbSubmitAppealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbSubmitAppealActionPerformed
@@ -807,29 +923,46 @@ public class GradeBookForm extends javax.swing.JFrame {
         pnlGetStudentGrades.setVisible(false);
         pnlAppeal.setVisible(true);
         pnlStudentResult.setVisible(true);
+        lblErrorAppeal.setText("");
+        lblErrorStudenId.setText("");
     }//GEN-LAST:event_rbSubmitAppealActionPerformed
 
     private void btnSubmitStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitStudentActionPerformed
         // TODO add your handling code here:
+        try {
+                Long.parseLong(txtStudentIdStudent.getText());
+            } catch (NumberFormatException e) {
+                //not a double
+                lblErrorStudenId.setText("Grade weight should be a number");
+                return;
+            }
         txtAreaStudent.setText("");
         ClientResponse clientResponse = restClient.getGradeEntryResource(ClientResponse.class, txtStudentIdStudent.getText());
         populateResultforStudent(clientResponse, "GetGrade");
+        
     }//GEN-LAST:event_btnSubmitStudentActionPerformed
 
     private void btnSubmitAppealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitAppealActionPerformed
         // TODO add your handling code here:
-        if(selectedAction.equals("SubmitAppeal")){
+        try {
+                Long.parseLong(txtStudentIdAppeal.getText());
+            } catch (NumberFormatException e) {
+                //not a double
+                lblErrorAppeal.setText("Grade weight should be a number");
+                return;
+            }
+        if (selectedAction.equals("SubmitAppeal")) {
             GradeAppeal newAppeal = new GradeAppeal();
             newAppeal.setGradeItemName(txtGradeItemNameAppeal.getText());
             newAppeal.setAppealComments(txtAppealComments.getText());
             newAppeal.setStudentId(Long.parseLong(txtStudentIdAppeal.getText()));
-            
+
             String xmlString = Converter.convertFromObjectToXml(newAppeal, GradeAppeal.class);
             ClientResponse clientResponse = restClient.createAppeal(xmlString);
             populateResultforStudent(clientResponse, "SubmitAppeal");
         }
-        
-        
+
+
     }//GEN-LAST:event_btnSubmitAppealActionPerformed
 
     private void hidePanelsInitially() {
@@ -841,13 +974,13 @@ public class GradeBookForm extends javax.swing.JFrame {
         pnlGetStudentGrades.setVisible(false);
         pnlStudentResult.setVisible(false);
     }
-    
-    public void populateResultforStudent(ClientResponse clientResponse, String method){
+
+    public void populateResultforStudent(ClientResponse clientResponse, String method) {
         String entity = "";
         StringBuilder result = new StringBuilder();
         try {
             if (method.equals("GetGrade")) {
-            entity = clientResponse.getEntity(String.class);
+                entity = clientResponse.getEntity(String.class);
                 result.append("Status code = ").append(clientResponse.getStatus()).append("\n");
                 if (clientResponse.getStatus() == Response.Status.OK.getStatusCode()) {
                     List<GradeBookEntry> listitem = (List<GradeBookEntry>) Converter.ReadXML(entity);
@@ -860,8 +993,7 @@ public class GradeBookForm extends javax.swing.JFrame {
                     result.append(entity).append("\n");
                 }
                 txtAreaStudent.setText(result.toString());
-            }
-            else if(method.equals("SubmitAppeal")){
+            } else if (method.equals("SubmitAppeal")) {
                 entity = clientResponse.getEntity(String.class);
                 GradeAppeal item = (GradeAppeal) Converter.convertFromXmlToObject(entity, GradeAppeal.class);
                 result.append("Student Id = ").append(item.getStudentId()).append("\n").append("Grade Item Name = ").append(item.getGradeItemName()).append("\n")
@@ -872,12 +1004,11 @@ public class GradeBookForm extends javax.swing.JFrame {
                 result.append("Status code = ").append(clientResponse.getStatus());
                 txtAreaStudent.setText(result.toString());
             }
-        }
-        catch(Exception ex){
-            
+        } catch (Exception ex) {
+
         }
     }
-    
+
     public void populateResult(ClientResponse clientResponse, String method) {
 
         String entity = "";
@@ -1023,6 +1154,7 @@ public class GradeBookForm extends javax.swing.JFrame {
     private javax.swing.JRadioButton getStudentGradeRadio;
     private javax.swing.JPanel gradeItemInputPanel;
     private javax.swing.JPanel gradePanel;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1030,6 +1162,10 @@ public class GradeBookForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblAppealComments;
+    private javax.swing.JLabel lblErrorAppeal;
+    private javax.swing.JLabel lblErrorMessage;
+    private javax.swing.JLabel lblErrorMessageGrade;
+    private javax.swing.JLabel lblErrorStudenId;
     private javax.swing.JLabel lblGradeItemAppeal;
     private javax.swing.JLabel lblGradeItemId;
     private javax.swing.JLabel lblGradeItemName;
