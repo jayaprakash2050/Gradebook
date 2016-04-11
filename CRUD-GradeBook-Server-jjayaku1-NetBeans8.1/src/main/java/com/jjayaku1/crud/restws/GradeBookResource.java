@@ -265,6 +265,7 @@ public class GradeBookResource {
             } else {
                 int givenId = Integer.parseInt(id);
                 int foundId = -1;
+                String foundName = "";
                 boolean isFound = false;
                 GradeItem foundItem = new GradeItem();
                 for (GradeItem item : gradingItems) {
@@ -272,6 +273,7 @@ public class GradeBookResource {
                     if (item.getItemId() == givenId) {
                         isFound = true;
                         foundItem = item;
+                        foundName = item.getItemName();
                         break;
                     }
                 }
@@ -280,6 +282,28 @@ public class GradeBookResource {
                     LOG.info("Deleting the grade item resource");
                     gradingItems.remove(foundId);
                     servletContext.setAttribute("gradingItems", gradingItems);
+                    gradeBook = (HashMap<Long, List<GradeBookEntry>>) servletContext.getAttribute("gradeBook");
+                    
+                    //Remove deleted gradeitems grade from hashmap
+                    HashMap<Long, List<GradeBookEntry>> newGradeBook = new HashMap<Long, List<GradeBookEntry>>();
+                    for(long key : gradeBook.keySet()){
+                        List<GradeBookEntry> updatedList = new ArrayList<GradeBookEntry>();
+                        List<GradeBookEntry> oldList = gradeBook.get(key);
+                        for(GradeBookEntry grade : oldList){
+                            
+                            if(grade.getItemName().equalsIgnoreCase(foundName)){
+                               //do nothing
+                               
+                            }
+                            else{
+                                updatedList.add(grade);
+                            }
+                            
+                        }
+                        newGradeBook.put(key, updatedList);
+                        
+                    }
+                    servletContext.setAttribute("gradeBook", newGradeBook);
                     LOG.info("Deleted the grade item resouce {}", foundItem);
 
                     response = Response.status(Response.Status.NO_CONTENT).entity("Deleted successfully").build();
